@@ -12,6 +12,10 @@
   --redlight: #fe525a;
   --redll: #ff141b7e;
   --pest: #3abc98;
+  --greenlight: #71fed6;
+  --pink: #ffc5e2;
+  --orang: #fed6ae;
+  --bluelight: #acbfe8;
 }
 html {
   scroll-behavior: smooth;
@@ -20,8 +24,26 @@ body {
   background: var(--bgprimary);
   color: var(--textprimary);
 }
+.upArrow {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  height: 50px;
+  width: 50px;
+  background: var(--redlight);
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+  font-size: 20px;
+  opacity: 0;
+  transition: 0.5s ease-in-out;
+  z-index: 2222;
+}
+.upArrow.active {
+  opacity: 1;
+}
 .home-section {
-  min-height: 100vh;
   position: relative;
 }
 
@@ -122,7 +144,7 @@ body {
   justify-content: space-between;
   width: 1540px;
   max-width: 90%;
-  margin: 100px auto;
+  margin: 108px auto;
   padding: 0 30px;
 }
 /* main text */
@@ -193,14 +215,14 @@ body {
 }
 /* -------------------------------------------------- */
 .about-section {
-  min-height: 90vh;
+  margin-top: 200px;
 }
-.about-section .text {
+.text {
   margin: 10px auto 56px;
-  width: 20%;
+  width: 300px;
   text-align: center;
 }
-.about-section .text h2 {
+.text h2 {
   padding-bottom: 20px;
   font-size: 40px;
 }
@@ -274,6 +296,103 @@ body {
   font-size: 18px;
 }
 
+/* card section  */
+.card-section {
+  margin-top: 200px;
+}
+.card-container {
+  max-width: 1540px;
+  width: 80%;
+  margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.card-container .card {
+  height: 400px;
+  width: 280px;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px var(--greenlight);
+  margin: 0 5px 15px 0;
+  padding: 20px 29px;
+  background: white;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+.card-container .card:nth-child(2) {
+  box-shadow: 0 1px 4px var(--pink);
+}
+.card-container .card:nth-child(3) {
+  box-shadow: 0 1px 4px var(--orang);
+}
+.card-container .card:nth-child(4) {
+  box-shadow: 0 1px 4px var(--bluelight);
+}
+.card-container .card::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--greenlight);
+  top: -71%;
+  left: 0;
+  z-index: -1;
+  transition: 0.5s ease-in-out;
+}
+.card-container .card:nth-child(2):before {
+  background: var(--pink);
+}
+.card-container .card:nth-child(3):before {
+  background: var(--orang);
+}
+.card-container .card:nth-child(4):before {
+  background: var(--bluelight);
+}
+.card-container .card:hover::before {
+  top: 31%;
+}
+.card-container .card .card-img {
+  height: 20%;
+  position: relative;
+}
+.card-container .card img {
+  width: 80px;
+  border-radius: 50%;
+  border: 5px solid white;
+  position: absolute;
+  top: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.card-container .card h3 {
+  margin: 74px 0 0px;
+}
+.card-container .card p {
+  margin: 10px 0 33px;
+}
+.card-container .card .btn2 {
+  text-decoration: none;
+  border: 2px solid #ffffff00;
+  color: #ffffff;
+  background: #4ce1b6;
+  padding: 11px 19px;
+  border-radius: 25px;
+}
+.card-container .card:nth-child(2) .btn2 {
+  background: #ff82c0;
+}
+.card-container .card:nth-child(3) .btn2 {
+  background: #f5b474;
+}
+.card-container .card:nth-child(4) .btn2 {
+  background: var(--bluelight);
+}
+.card-container .card:hover .btn2 {
+  color: var(--textprimary);
+  background: transparent;
+  border-color: var(--textprimary);
+}
 /* resposive frame */
 @media screen and (max-width: 991px) {
   /* navbar */
@@ -314,7 +433,7 @@ body {
   .main .text-content h1 {
     font-size: 34px;
   }
-
+  /* about section */
   /* img content */
   .about-section .about-container {
     flex-direction: column;
@@ -370,11 +489,26 @@ body {
   }
 
   /* about section */
+  .about-section {
+    margin-top: 130px;
+  }
   .about-section .about-container {
     max-width: 88%;
   }
   .about-section .about-container .img {
     width: 240px;
     height: 240px;
+  }
+
+  /* card section */
+  .card-section {
+    margin-top: 134px;
+  }
+  .upArrow {
+    bottom: 35px;
+    right: 35px;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
   }
 }
